@@ -1,5 +1,4 @@
-const mongoose,
-  { Schema } = require("mongoose");
+const mongoose = require("mongoose");
 
 const KeluargaSchema = new mongoose.Schema(
   {
@@ -20,4 +19,4 @@ const KeluargaSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const KeluargaModel = mongoose.model("keluarga", KeluargaSchema);
+module.exports = mongoose.model("Keluarga", KeluargaSchema);

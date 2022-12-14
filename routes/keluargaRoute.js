@@ -26,7 +26,7 @@ router.get("/assets", async (req, res) => {
       },
       {
         $group: {
-          _id: null,
+          _id: "$nama",
           total: { $sum: "$aset.asetPrice" },
         },
       },

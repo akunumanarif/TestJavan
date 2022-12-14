@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 const cors = require("cors");
 const keluargaRoute = require("./routes/keluargaRoute");
 
 mongoose
-  .connect(
-    "mongodb+srv://numanarif:akunumanarif@cluster0.ecx0a.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connection Succesful"))
   .catch((err) => console.log(err));
 

@@ -43,4 +43,15 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
+//? Hapus Data
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await KeluargaModel.findByIdAndDelete(req.params.id);
+    res.status(200).json("Data berhasil dihapus");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

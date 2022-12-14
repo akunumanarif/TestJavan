@@ -4,9 +4,10 @@ const router = express.Router();
 
 //? Get Semua Anggota Keluarga
 
-router.get("/", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
-    console.log("Tes");
+    let data = await KeluargaModel.find();
+    res.status(200).json(data);
   } catch (error) {
     res.status(404).json(error);
   }

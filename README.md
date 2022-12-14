@@ -1,5 +1,10 @@
 ## **Javan Test Nilai Aset Keluarga**
 
+**Run Script**
+
+- `dev` - Run in development mode
+- `build` - Run in build mode
+
 **HTTP Methods**
 
 - `GET` - Requests data aset dan anggota keluarga

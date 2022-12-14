@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const keluargaRoute = require("./routes/keluargaRoute");
 
 mongoose
   .connect(
@@ -8,6 +9,10 @@ mongoose
   )
   .then(() => console.log("MongoDB connection Succesful"))
   .catch((err) => console.log(err));
+
+app.use(express.json());
+
+app.use("/api", keluargaRoute);
 
 const PORT = 5000;
 

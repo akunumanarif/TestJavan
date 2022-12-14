@@ -13,9 +13,33 @@ router.get("/all", async (req, res) => {
   }
 });
 
-//? Get Nilai aset seluruh keluarga
+//? Get total Nilai aset seluruh keluarga
 
-router.get("/assets", async (req, res) => {
+router.get("/totalAset", async (req, res) => {
+  try {
+    const allAssets = await KeluargaModel.aggregate([
+      { $unwind: "$aset" },
+      {
+        $match: {
+          "aset.asetPrice": { $gte: 0 },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          total: { $sum: "$aset.asetPrice" },
+        },
+      },
+    ]);
+    res.status(200).json(allAssets);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+//? Get total nilai aset per orang
+
+router.get("/asetPerOrg", async (req, res) => {
   try {
     const allAssets = await KeluargaModel.aggregate([
       { $unwind: "$aset" },
